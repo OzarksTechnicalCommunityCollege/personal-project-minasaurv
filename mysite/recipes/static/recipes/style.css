@@ -1,0 +1,232 @@
+:root {
+  --capybara-brown: #8c6a4a;
+  --leafy-green: #6a9a6b;
+  --river-blue: #5aa0b4;
+  --sand-beige: #f7f3e9;
+  --dark-text: #2f2a26;
+  --muted-text: #6b5f57;
+  --card-bg: #ffffff;
+  --border: #e3ddd5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--sand-beige);
+  color: var(--dark-text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--river-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout */
+#content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(160%) blur(6px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--capybara-brown);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav a {
+  margin-left: 16px;
+  color: var(--dark-text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.main-nav a:hover {
+  color: var(--capybara-brown);
+  background: rgba(140, 106, 74, 0.08);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+
+.footer-inner {
+  padding: 20px 0;
+  text-align: center;
+  color: var(--muted-text);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Typography */
+h1, h2, h3 {
+  margin: 0.5em 0 0.4em;
+  line-height: 1.25;
+  color: var(--capybara-brown);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0.5em 0 1em;
+  color: var(--muted-text);
+}
+
+/* Cards for recipe listings */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--capybara-brown);
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  border: 1px solid var(--capybara-brown);
+  background: var(--capybara-brown);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.btn:hover {
+  background: #7b5f42;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--capybara-brown);
+}
+
+.btn-outline:hover {
+  background: rgba(140, 106, 74, 0.08);
+}
+
+/* Tags / badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(106, 154, 107, 0.15);
+  color: var(--leafy-green);
+  border: 1px solid rgba(106, 154, 107, 0.35);
+}
+
+/* Header and footer accents */
+.bar {
+  height: 6px;
+  width: 100%;
+  background-image: linear-gradient(90deg, var(--capybara-brown), var(--leafy-green), var(--river-blue));
+}
+
+/* Utilities */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stack > * + * {
+  margin-top: 12px;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  #content {
+    padding: 16px;
+  }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  .header-inner { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 8px; 
+  }
+  .main-nav a { 
+    margin: 0 8px 8px 0; 
+  }
+}

@@ -1,0 +1,8 @@
+{% extends "recipes/base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+  <h1>Wilkommen</h1>
+  <p>Cappy ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p><a href="{% url 'recipes:post_list' %}">View Recipes</a></p>
+{% endblock %}

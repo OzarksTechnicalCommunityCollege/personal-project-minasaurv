@@ -13,7 +13,19 @@
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
-    {{ post.content|md|truncatewords_html:50 }}
+
+        <div class="summary">
+            {% if post.servings %}
+            <span><strong>Servings:</strong> {{ post.servings }}</span>
+            {% endif %}
+            {% if post.time %}
+            <span><strong>Time (mins):</strong> {{ post.time }}</span>
+            {% endif %}
+        </div>
+
+        <div class="excerpt">
+            {{ post.content|md|truncatewords_html:50 }}
+        </div>
     {% endfor %}
 
     <div class="pagination">

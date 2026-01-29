@@ -40,6 +40,27 @@ class Post(models.Model):
         choices=Status.choices,
         default=Status.DRAFT
     )
+    # Additional recipe metadata
+    servings = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        help_text="Number of servings"
+    )
+    time = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        help_text="Preparation/cook time in minutes"
+    )
+    instructions = models.TextField(
+        null=True,
+        blank=True,
+        help_text="Step-by-step instructions"
+    )
+    substitution = models.TextField(
+        null=True,
+        blank=True,
+        help_text="Ingredient substitutions or alternatives"
+    )
     objects = models.Manager()
     published = PublishedManager()
 

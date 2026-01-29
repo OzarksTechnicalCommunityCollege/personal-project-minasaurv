@@ -4,6 +4,34 @@
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p class="date"> Published {{ post.publish }} by {{ post.author }}</p>
-    {{ post.content|md }}
+    <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+
+    <section class="meta">
+        <ul>
+            {% if post.servings %}
+            <li><strong>Servings:</strong> {{ post.servings }}</li>
+            {% endif %}
+            {% if post.time %}
+            <li><strong>Time (mins):</strong> {{ post.time }}</li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section class="content">
+        {{ post.content|md }}
+    </section>
+
+    {% if post.instructions %}
+    <section class="instructions">
+        <h2>Instructions</h2>
+        {{ post.instructions|md }}
+    </section>
+    {% endif %}
+
+    {% if post.substitution %}
+    <section class="substitution">
+        <h2>Substitutions</h2>
+        {{ post.substitution|md }}
+    </section>
+    {% endif %}
 {% endblock %}

@@ -6,7 +6,7 @@
     <h1>Recipes</h1>
     {% for post in posts %}
         <h2>
-            <a href="{% url 'recipes:post_detail' post.id %}">
+            <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
             </a>
         </h2>
@@ -15,4 +15,31 @@
         </p>
     {{ post.content|md|truncatewords_html:50 }}
     {% endfor %}
+
+    <div class="pagination">
+        {% if posts.paginator.num_pages > 1 %}
+            <span class="page-info">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+            <div class="page-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}" class="prev">Previous</a>
+                {% else %}
+                    <span class="disabled prev">Previous</span>
+                {% endif %}
+
+                {% for num in posts.paginator.page_range %}
+                    {% if num == posts.number %}
+                        <span class="current">{{ num }}</span>
+                    {% else %}
+                        <a href="?page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}" class="next">Next</a>
+                {% else %}
+                    <span class="disabled next">Next</span>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

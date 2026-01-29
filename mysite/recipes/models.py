@@ -28,7 +28,6 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='recipe_posts'
     )
-    body = models.TextField()
     content = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)

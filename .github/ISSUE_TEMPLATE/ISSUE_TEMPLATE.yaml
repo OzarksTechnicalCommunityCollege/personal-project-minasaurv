@@ -36,6 +36,7 @@ body:
         - 4.03- Follow standard conventions to develop an intuitive user interface
         - 4.04- Configure form classes with defined field types
         - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
         - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
@@ -100,6 +101,7 @@ body:
         - 4.03- Follow standard conventions to develop an intuitive user interface
         - 4.04- Configure form classes with defined field types
         - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
         - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
@@ -164,6 +166,7 @@ body:
         - 4.03- Follow standard conventions to develop an intuitive user interface
         - 4.04- Configure form classes with defined field types
         - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
         - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)

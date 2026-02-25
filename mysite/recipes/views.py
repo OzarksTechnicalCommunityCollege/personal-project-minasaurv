@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
+from .forms import CommentForm
 
 # Post list view
 def post_list(request):
@@ -29,4 +30,45 @@ def post_detail(request, year, month, day, post):
         publish__month=month,
         publish__day=day,
     )
-    return render(request, 'recipes/post/detail.html', {'post': post})
+    # Display only active comments in chronological order
+    comments = post.comments.filter(active=True)
+    form = CommentForm()
+    return render(
+        request,
+        'recipes/post/detail.html',
+        {
+            'post': post,
+            'comments': comments,
+            'form': form,
+        },
+    )
+
+
+# Post comment submission view
+def post_comment(request, post_id):
+    post = get_object_or_404(
+        Post,
+        id=post_id,
+        status=Post.Status.PUBLISHED,
+    )
+    comment = None
+
+    # Handle comment form submission
+    if request.method == 'POST':
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+    else:
+        form = CommentForm()
+
+    return render(
+        request,
+        'recipes/post/comment.html',
+        {
+            'post': post,
+            'form': form,
+            'comment': comment,
+        },
+    )

@@ -75,3 +75,30 @@ class Post(models.Model):
                 self.publish.day,
                 self.slug
             ])
+
+# Comment model for recipe posts
+class Comment(models.Model):
+    # Relationship and author info
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    # Metadata
+    class Meta:
+        ordering = ['created']
+        indexes = [
+            models.Index(fields=['created']),
+            models.Index(fields=['active']),
+        ]
+
+    # String representation
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'

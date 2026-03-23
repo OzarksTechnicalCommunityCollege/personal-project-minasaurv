@@ -8,23 +8,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recipes', '0001_initial'),
+        ("recipes", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RenameIndex(
-            model_name='post',
-            new_name='recipes_pos_publish_286616_idx',
-            old_name='recipes_post_publish_bb7600_idx',
+            model_name="post",
+            new_name="recipes_pos_publish_286616_idx",
+            old_name="recipes_post_publish_bb7600_idx",
         ),
         migrations.RemoveField(
-            model_name='post',
-            name='body',
+            model_name="post",
+            name="body",
         ),
         migrations.AlterField(
-            model_name='post',
-            name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='recipe_posts', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="author",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="recipe_posts",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

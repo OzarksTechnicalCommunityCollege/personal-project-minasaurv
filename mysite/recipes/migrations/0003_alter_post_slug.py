@@ -6,13 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recipes', '0002_rename_recipes_post_publish_bb7600_idx_recipes_pos_publish_286616_idx_and_more'),
+        (
+            "recipes",
+            "0002_rename_recipes_post_publish_bb7600_idx_recipes_pos_publish_286616_idx_and_more",
+        ),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='slug',
-            field=models.SlugField(max_length=250, unique_for_date='publish'),
+            model_name="post",
+            name="slug",
+            field=models.SlugField(max_length=250, unique_for_date="publish"),
         ),
     ]

@@ -2,9 +2,9 @@ from django.apps import AppConfig
 
 
 class RecipesConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'recipes'
-    
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "recipes"
+
     def ready(self):
         # Ensure custom templatetags are importable in all environments
         try:

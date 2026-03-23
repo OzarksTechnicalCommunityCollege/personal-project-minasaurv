@@ -1,0 +1,114 @@
+{% extends "recipes/base.html" %}
+{% load markdown_extras %}
+{% block title %}
+    {% if query %}
+        Search Results for "{{ query }}"
+    {% else %}
+        Search Recipes
+    {% endif %}
+{% endblock title %}
+{% block content %}
+    {% if query %}
+        <section class="stack">
+            <h1>Search Results for "{{ query }}"</h1>
+            <p>
+                {% with results.count as total_results %}Found {{ total_results }} recipe{{ total_results|pluralize }}{% endwith %}
+                {% if search_method %}• <small><em>{{ search_method }}</em></small>{% endif %}
+            </p>
+        </section>
+        <section class="grid" aria-label="Search results">
+            {% for post in results %}
+                <article class="card stack">
+                    <h2 class="card-title">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </h2>
+                    <p class="card-meta">Published {{ post.publish|date:"M j, Y" }} by {{ post.author }}</p>
+                    <div class="cluster">
+                        {% if post.servings %}<span class="badge">Serves {{ post.servings }}</span>{% endif %}
+                        {% if post.time %}<span class="badge">{{ post.time }} mins</span>{% endif %}
+                    </div>
+                    <p>
+                        {% for tag in post.tags.all %}
+                            <a href="{% url 'recipes:post_list_by_tag' tag.slug %}" class="badge">{{ tag.name }}</a>
+                        {% empty %}
+                            <span class="card-meta">No tags</span>
+                        {% endfor %}
+                    </p>
+                    <div>{{ post.content|md|truncatewords_html:30 }}</div>
+                    <p>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-outline">View Recipe</a>
+                    </p>
+                </article>
+            {% empty %}
+                <div class="no-results card">
+                    <h2>No recipes found</h2>
+                    <p>
+                        We couldn't find any recipes matching "<strong>{{ query }}</strong>". Try:
+                    </p>
+                    <ul>
+                        <li>Using different or fewer keywords</li>
+                        <li>Checking your spelling</li>
+                        <li>Searching for ingredient names (e.g., "chicken", "tomato")</li>
+                        <li>Trying cooking methods (e.g., "bake", "grill", "sauté")</li>
+                        <li>Looking for recipe types (e.g., "pasta", "soup", "dessert")</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </section>
+        <div class="search-again">
+            <p>
+                <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">Try a New Search</a>
+                <a href="{% url 'recipes:post_list' %}" class="btn btn-outline">Browse All Recipes</a>
+            </p>
+        </div>
+    {% else %}
+        <div class="search-page-hero">
+            <div class="search-hero-content">
+                <h1 class="search-hero-title">KapyKitchen</h1>
+                <p class="search-hero-subtitle">Find the perfect recipe</p>
+                <form method="get" class="search-hero-form">
+                    <div class="search-hero-input-group">
+                        {{ form.query }}
+                        <button type="submit" class="search-hero-button" aria-label="Search">
+                            <span aria-hidden="true">🔍</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="search-hero-links">
+                    <a href="{% url 'recipes:post_list' %}">Browse All Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="search-tips-section">
+            <div class="container">
+                <h2>Search Tips</h2>
+                <div class="tips-grid">
+                    <div class="tip-category">
+                        <h3>Try Recipe Names</h3>
+                        <ul>
+                            <li>"chocolate cake"</li>
+                            <li>"beef stir fry"</li>
+                            <li>"caesar salad"</li>
+                        </ul>
+                    </div>
+                    <div class="tip-category">
+                        <h3>Search Ingredients</h3>
+                        <ul>
+                            <li>"chicken"</li>
+                            <li>"tomatoes"</li>
+                            <li>"garlic basil"</li>
+                        </ul>
+                    </div>
+                    <div class="tip-category">
+                        <h3>Cooking Methods</h3>
+                        <ul>
+                            <li>"bake"</li>
+                            <li>"grill"</li>
+                            <li>"slow cook"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

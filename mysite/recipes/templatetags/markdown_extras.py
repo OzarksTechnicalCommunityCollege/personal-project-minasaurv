@@ -8,6 +8,7 @@ except Exception:
 
 register = template.Library()
 
+
 @register.filter(name="md")
 def markdown_filter(value):
     if value is None:

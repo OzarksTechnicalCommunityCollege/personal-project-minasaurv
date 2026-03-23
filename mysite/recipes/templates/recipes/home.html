@@ -1,8 +1,52 @@
 {% extends "recipes/base.html" %}
-
-{% block title %}Home{% endblock %}
+{% load static %}
+{% block title %}Home{% endblock title %}
 {% block content %}
-  <h1>Wilkommen</h1>
-  <p>Cappy ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <p><a href="{% url 'recipes:post_list' %}">View Recipes</a></p>
-{% endblock %}
+    <section class="home-hero" aria-label="Welcome section">
+        <div class="home-hero-copy">
+            <p class="home-eyebrow">The Cozy Kitchen</p>
+            <h1>Delicious recipes, zero stress.</h1>
+            <p class="home-lead">Welcome to a whimsical corner of the kitchen where friendly capybara energy meets practical recipes you can actually cook tonight.</p>
+            <div class="cluster home-actions">
+                <a href="{% url 'recipes:post_list' %}" class="btn btn-primary">Browse Recipes</a>
+                <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">Find a Cozy Dish</a>
+            </div>
+            <ul class="home-highlights" aria-label="Key benefits">
+                <li>Gentle, weeknight-friendly meals</li>
+                <li>No-fuss ingredient lists</li>
+                <li>Step-by-step guidance without the chaos</li>
+            </ul>
+        </div>
+        <div class="home-hero-media card">
+            <img src="{% static 'recipes/Chefybara.png' %}"
+                 alt="Chefybara mascot in a chef hat"
+                 class="hero-image"
+                 width="1024"
+                 height="1024">
+        </div>
+    </section>
+
+    <section class="home-value grid" aria-label="Why use KapyKitchen">
+        <article class="card home-value-card stack">
+            <h2>Built for Cozy Kitchens</h2>
+            <p>Comfort-first recipes with clear steps, realistic timings, and zero mysterious chef jargon.</p>
+        </article>
+        <article class="card home-value-card stack">
+            <h2>Cook with What You Have</h2>
+            <p>Start from your pantry and find capybara-approved meals without emergency grocery runs.</p>
+        </article>
+        <article class="card home-value-card stack">
+            <h2>Keep It Easy, Keep It Fun</h2>
+            <p>From quick comfort bowls to weekend bakes, pick recipes that match your mood and time.</p>
+        </article>
+    </section>
+
+    <section class="home-cta card" aria-label="Get started">
+        <h2>Ready for your next cozy bite?</h2>
+        <p>Hop into the recipe list or search by ingredient and let Chefybara guide dinner.</p>
+        <div class="cluster">
+            <a href="{% url 'recipes:post_list' %}" class="btn">Start Cooking</a>
+            <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">Open Search</a>
+        </div>
+    </section>
+{% endblock content %}

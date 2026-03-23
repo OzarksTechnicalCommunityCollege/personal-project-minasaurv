@@ -1,32 +1,205 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}{% endblock %}</title>
-    <link href="{% static 'recipes/style.css' %}" rel="stylesheet">
-</head>
-<body>
-    <header class="site-header">
-        <div class="bar"></div>
-        <div class="container header-inner">
-            <a class="brand" href="{% url 'home' %}">KapyKitchen</a>
-            <nav class="main-nav">
-                <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'recipes:post_list' %}">Recipes</a>
-                <a href="/admin/">Admin</a>
-            </nav>
-        </div>
-    </header>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="KapyKitchen recipes with practical ingredients, clear steps, and approachable cooking guidance.">
+        <meta name="keywords" content="recipes, cooking, ingredients, meal ideas, KapyKitchen">
+        <title>
+            {% block title %}{% endblock title %}
+        </title>
+        <link href="{% static 'recipes/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="bar"></div>
+            <div class="container header-inner">
+                <a class="brand" href="{% url 'home' %}" aria-label="KapyKitchen Home">KapyKitchen</a>
+                <!-- Header Search Bar -->
+                <div class="header-search">
+                    <form method="get"
+                          action="{% url 'recipes:post_search' %}"
+                          role="search"
+                          aria-label="Recipe search">
+                        <div class="search-input-group">
+                            <input type="search"
+                                   name="query"
+                                   placeholder="Search recipes, ingredients..."
+                                   aria-label="Search recipes"
+                                   class="search-input"
+                                   value="{{ request.GET.query|default:'' }}">
+                            <button type="submit" class="search-button" aria-label="Search">
+                                <span class="search-icon" aria-hidden="true">🔍</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <button class="nav-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="main-navigation"
+                        aria-label="Toggle navigation menu">
+                    <span class="nav-toggle-bar" aria-hidden="true"></span>
+                    <span class="nav-toggle-bar" aria-hidden="true"></span>
+                    <span class="nav-toggle-bar" aria-hidden="true"></span>
+                </button>
+                <nav class="main-nav" id="main-navigation" role="navigation" aria-label="Main navigation">
+                    <div class="nav-search">
+                        <form method="get"
+                              action="{% url 'recipes:post_search' %}"
+                              role="search"
+                              aria-label="Recipe search">
+                            <div class="search-input-group">
+                                <input type="search"
+                                       name="query"
+                                       placeholder="Search recipes, ingredients..."
+                                       aria-label="Search recipes"
+                                       class="search-input"
+                                       value="{{ request.GET.query|default:'' }}">
+                                <button type="submit" class="search-button" aria-label="Search">
+                                    <span class="search-icon" aria-hidden="true">🔍</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'recipes:post_list' %}">Recipes</a>
+                    <a href="{% url 'admin:index' %}">Admin</a>
+                </nav>
+            </div>
+        </header>
+        <main id="content" role="main">
+            {% block content %}{% endblock content %}
+        </main>
+        <footer class="site-footer">
+            <div class="footer-bar"></div>
+            <div class="footer-inner">
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-section">
+                            <div class="footer-brand">KapyKitchen</div>
+                            <div class="footer-divider"></div>
+                            <p>Practical recipes for everyday cooking</p>
+                        </div>
+                    </div>
+                    <div class="footer-policy-links">
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#privacy">Privacy Policy</a>
+                    </div>
+                    <p>© {% now "Y" %} KapyKitchen. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script>
+            const searchPlaceholders = [
+                "Search recipes...",
+                "Find ingredients...",
+                "Search...",
+                "What are you cooking?",
+                "Find something delicious...",
+                "Summon delicious chaos...",
+                "Go on a flavor quest!",
+                "Search for noodle enlightenment...",
+                "Tickle your taste buds...",
+                "Chase the garlic dreams...",
+                "Find your cooking soulmate...",
+                "What does your belly say?",
+                "Awaken your inner chef...",
+                "Seek the carb-loaded destiny...",
+                "Dance with some dough...",
+                "Uncovering veggie wonders...",
+                "Navigate the flavor cosmos...",
+                "Spice up the adventure!",
+                "Whisper your cravings here...",
+                "Time to get saucy...",
+                "Embark on a cheesy quest...",
+                "Breathe in the recipes...",
+                "Where's your food fortune?",
+                "Let's make memories, deliciously...",
+                "Look for recipes...",
+                "Type a recipe name...",
+                "Search meals...",
+                "Find dinner ideas...",
+                "Make a dish..."
+            ];
 
-    <main id="content" role="main">
-        {% block content %}
-        {% endblock %}
-    </main>
+            let currentPlaceholderIndex = -1;
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>© {% now "Y" %} KapyKitchen</p>
-        </div>
-    </footer>
-</body>
+            function setRandomPlaceholder(animate = false) {
+                const searchInputs = document.querySelectorAll('.search-input, .search-input-dynamic, .search-hero-form input');
+                let randomIndex = Math.floor(Math.random() * searchPlaceholders.length);
+                
+                // Ensure we don't pick the same placeholder twice in a row
+                while (randomIndex === currentPlaceholderIndex) {
+                    randomIndex = Math.floor(Math.random() * searchPlaceholders.length);
+                }
+                
+                currentPlaceholderIndex = randomIndex;
+                const newPlaceholder = searchPlaceholders[randomIndex];
+                
+                searchInputs.forEach(input => {
+                    if (animate) {
+                        input.classList.add('placeholder-animating');
+                        setTimeout(() => {
+                            input.placeholder = newPlaceholder;
+                            input.classList.remove('placeholder-animating');
+                            input.classList.add('placeholder-new');
+                            setTimeout(() => {
+                                input.classList.remove('placeholder-new');
+                            }, 400);
+                        }, 400);
+                    } else {
+                        input.placeholder = newPlaceholder;
+                    }
+                });
+            }
+
+            // Set placeholder on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                setRandomPlaceholder(false);
+
+                const navToggle = document.querySelector('.nav-toggle');
+                const mainNav = document.getElementById('main-navigation');
+
+                if (navToggle && mainNav) {
+                    const closeMenu = () => {
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navToggle.classList.remove('is-open');
+                        mainNav.classList.remove('is-open');
+                    };
+
+                    navToggle.addEventListener('click', () => {
+                        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+                        const nextState = !isOpen;
+
+                        navToggle.setAttribute('aria-expanded', String(nextState));
+                        navToggle.classList.toggle('is-open', nextState);
+                        mainNav.classList.toggle('is-open', nextState);
+                    });
+
+                    mainNav.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', closeMenu);
+                    });
+
+                    window.addEventListener('resize', () => {
+                        if (window.innerWidth > 1024) {
+                            closeMenu();
+                        }
+                    });
+                }
+
+                // Change placeholder every 4 seconds
+                setInterval(() => {
+                    setRandomPlaceholder(true);
+                }, 4000);
+            });
+            
+            // Also run immediately in case DOM is already loaded
+            setRandomPlaceholder(false);
+            setInterval(() => {
+                setRandomPlaceholder(true);
+            }, 4000);
+        </script>
+    </body>
 </html>

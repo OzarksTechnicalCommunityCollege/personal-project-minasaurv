@@ -1,55 +1,69 @@
 {% extends "recipes/base.html" %}
 {% load markdown_extras tz %}
-
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title }}{% endblock title %}
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
-
-    <section class="meta">
-        <ul>
-            {% if post.servings %}
-            <li><strong>Servings:</strong> {{ post.servings }}</li>
-            {% endif %}
-            {% if post.time %}
-            <li><strong>Time (mins):</strong> {{ post.time }}</li>
-            {% endif %}
-        </ul>
-    </section>
-
-    <section class="content">
-        {{ post.content|md }}
-    </section>
-
-    {% if post.instructions %}
-    <section class="instructions">
-        <h2>Instructions</h2>
-        {{ post.instructions|md }}
-    </section>
-    {% endif %}
-
-    {% if post.substitution %}
-    <section class="substitution">
-        <h2>Substitutions</h2>
-        {{ post.substitution|md }}
-    </section>
-    {% endif %}
-
-    {% with comments.count as total_comments %}
-        <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
-    {% endwith %}
-
-    {% for comment in comments %}
-        <div class="comment">
-            <p class="info">
-                Comment {{ forloop.counter }} by {{ comment.name }}
-                {{ comment.created|localtime|date:"M j, Y g:i a" }}
+    <article class="stack recipes-detail-page">
+        <header class="stack card recipe-detail-header">
+            <p class="home-eyebrow">Recipe Details</p>
+            <h1>{{ post.title }}</h1>
+            <p class="card-meta">Published {{ post.publish|date:"M j, Y" }} by {{ post.author }}</p>
+            <div class="cluster">
+                {% if post.servings %}<span class="badge">Serves {{ post.servings }}</span>{% endif %}
+                {% if post.time %}<span class="badge">{{ post.time }} mins</span>{% endif %}
+            </div>
+            <p class="recipe-tag-line" aria-label="Recipe tags">
+                <strong>Tags:</strong>
+                &lt;
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'recipes:post_list_by_tag' tag.slug %}" class="tag-inline-link">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    <span class="tag-empty">none</span>
+                {% endfor %}
+                &gt;
             </p>
-            {{ comment.body|linebreaks }}
-        </div>
-    {% empty %}
-        <p>There are no comments.</p>
-    {% endfor %}
-
+        </header>
+        <section class="card content recipe-detail-content">
+            {{ post.content|md }}
+        </section>
+    </article>
+    {% if post.recipe_ingredients.all %}
+        <section class="ingredients card recipe-detail-panel">
+            <h2>Ingredients</h2>
+            <ul>
+                {% for item in post.recipe_ingredients.all %}
+                    <li>
+                        {% if item.quantity %}{{ item.quantity }}{% endif %}
+                        {% if item.unit %}{{ item.unit }}{% endif %}
+                        {{ item.ingredient.name }}
+                        {% if item.notes %}({{ item.notes }}){% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+    {% if post.recipe_steps.all %}
+        <section class="steps card recipe-detail-panel">
+            <h2>Steps</h2>
+            <ol>
+                {% for step in post.recipe_steps.all %}<li>{{ step.instruction|linebreaksbr }}</li>{% endfor %}
+            </ol>
+        </section>
+    {% endif %}
+    <section class="recipe-comments stack">
+        {% with comments.count as total_comments %}
+            <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+        {% endwith %}
+        {% for comment in comments %}
+            <div class="comment card">
+                <p class="info">
+                    Comment {{ forloop.counter }} by {{ comment.name }}
+                    {{ comment.created|localtime|date:"M j, Y g:i a" }}
+                </p>
+                {{ comment.body|linebreaks }}
+            </div>
+        {% empty %}
+            <p>There are no comments.</p>
+        {% endfor %}
+    </section>
     {% include "recipes/post/includes/comment_form.html" %}
-{% endblock %}
+{% endblock content %}

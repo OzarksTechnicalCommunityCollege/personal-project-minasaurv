@@ -1,12 +1,15 @@
-<h2>Add a new comment</h2>
-<form action="{% url 'recipes:post_comment' post.id %}" method="post" class="comment-form">
-  <div class="left">
-    {{ form.name.as_field_group }}
-  </div>
-  <div class="left">
-    {{ form.email.as_field_group }}
-  </div>
-  {{ form.body.as_field_group }}
-  {% csrf_token %}
-  <p><input type="submit" value="Add comment" class="btn"></p>
-</form>
+<section class="card stack">
+    <h2>Leave a Comment</h2>
+    <p>Share feedback, questions, or helpful variations for this recipe.</p>
+    <form action="{% url 'recipes:post_comment' post.id %}"
+          method="post"
+          class="comment-form">
+        <div class="left">{{ form.name.as_field_group }}</div>
+        <div class="left">{{ form.email.as_field_group }}</div>
+        {{ form.body.as_field_group }}
+        {% csrf_token %}
+        <p>
+            <input type="submit" value="Post Comment" class="btn">
+        </p>
+    </form>
+</section>

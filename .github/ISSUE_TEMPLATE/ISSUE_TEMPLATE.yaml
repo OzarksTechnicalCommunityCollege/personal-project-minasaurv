@@ -1,4 +1,4 @@
-name: Peer Fedback report
+name: Pear Feedback report
 description: Leave meaningful feedback for your reviewee
 title: "[Feedback]: "
 labels: ["test1", "test2"]
@@ -20,17 +20,17 @@ body:
         - 1.02- Break complex functions into manageable modules and functions
         - 1.03- Use source control best-practices to manage a code-base
         - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
-        - 1.05- Diagram application functionality using flowcharts, UML diagrams, and/or pseudocode
-        - 2.01- Implement access control for class members
-        - 2.02- Configure base classes and derived classes to facilitate code reusability
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
         - 2.03- Use function and class decorators to extend or modify behavior
         - 2.04- Manage user login systems and permission controls
         - 2.05- Define or modify API endpoints for data retrieval and manipulation
-        - 2.06- Manage real-time communication between software components using Websockets
-        - 2.07- Describe the function of custom metaclasses to dictate class creation
-        - 3.01- Build web-enabled applications suing the MTV (Model-Template-View) design pattern
-        - 3.02- Modify RESTful APIs to add/update functionality
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
         - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
         - 4.01- Implement view-logic to receive data and return results
         - 4.02- Use templates to create stylized web pages
         - 4.03- Follow standard conventions to develop an intuitive user interface
@@ -41,14 +41,17 @@ body:
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
         - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
         - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
         - 6.02- Deploy an application to a production environment
         - 6.03- Virtualize a consistent environment using Docker for containerization
         - 6.04- Implement callbacks and event listeners in applications
-        - 6.05- Code asynchronous methods to maintain responsiveness in an application
+        - 6.05- Utilize tools like signals to automate operations
         - 7.01- Detect logic errors in an application using debugging tools
-        - 7.02- Examine log files to trace the source of an error
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
         - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
         - 8.01- Visualize data using a chart or graph
         - 8.02- Elucidate data by customizing elements of a data visualization
         - 8.03- Integrate dynamic data visualizations into an application
@@ -85,17 +88,17 @@ body:
         - 1.02- Break complex functions into manageable modules and functions
         - 1.03- Use source control best-practices to manage a code-base
         - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
-        - 1.05- Diagram application functionality using flowcharts, UML diagrams, and/or pseudocode
-        - 2.01- Implement access control for class members
-        - 2.02- Configure base classes and derived classes to facilitate code reusability
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
         - 2.03- Use function and class decorators to extend or modify behavior
         - 2.04- Manage user login systems and permission controls
         - 2.05- Define or modify API endpoints for data retrieval and manipulation
-        - 2.06- Manage real-time communication between software components using Websockets
-        - 2.07- Describe the function of custom metaclasses to dictate class creation
-        - 3.01- Build web-enabled applications suing the MTV (Model-Template-View) design pattern
-        - 3.02- Modify RESTful APIs to add/update functionality
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
         - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
         - 4.01- Implement view-logic to receive data and return results
         - 4.02- Use templates to create stylized web pages
         - 4.03- Follow standard conventions to develop an intuitive user interface
@@ -106,14 +109,17 @@ body:
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
         - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
         - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
         - 6.02- Deploy an application to a production environment
         - 6.03- Virtualize a consistent environment using Docker for containerization
         - 6.04- Implement callbacks and event listeners in applications
-        - 6.05- Code asynchronous methods to maintain responsiveness in an application
+        - 6.05- Utilize tools like signals to automate operations
         - 7.01- Detect logic errors in an application using debugging tools
-        - 7.02- Examine log files to trace the source of an error
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
         - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
         - 8.01- Visualize data using a chart or graph
         - 8.02- Elucidate data by customizing elements of a data visualization
         - 8.03- Integrate dynamic data visualizations into an application
@@ -150,17 +156,17 @@ body:
         - 1.02- Break complex functions into manageable modules and functions
         - 1.03- Use source control best-practices to manage a code-base
         - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
-        - 1.05- Diagram application functionality using flowcharts, UML diagrams, and/or pseudocode
-        - 2.01- Implement access control for class members
-        - 2.02- Configure base classes and derived classes to facilitate code reusability
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
         - 2.03- Use function and class decorators to extend or modify behavior
         - 2.04- Manage user login systems and permission controls
         - 2.05- Define or modify API endpoints for data retrieval and manipulation
-        - 2.06- Manage real-time communication between software components using Websockets
-        - 2.07- Describe the function of custom metaclasses to dictate class creation
-        - 3.01- Build web-enabled applications suing the MTV (Model-Template-View) design pattern
-        - 3.02- Modify RESTful APIs to add/update functionality
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
         - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
         - 4.01- Implement view-logic to receive data and return results
         - 4.02- Use templates to create stylized web pages
         - 4.03- Follow standard conventions to develop an intuitive user interface
@@ -171,14 +177,17 @@ body:
         - 5.02- Utilize ORM for data manipulation
         - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
         - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
         - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
         - 6.02- Deploy an application to a production environment
         - 6.03- Virtualize a consistent environment using Docker for containerization
         - 6.04- Implement callbacks and event listeners in applications
-        - 6.05- Code asynchronous methods to maintain responsiveness in an application
+        - 6.05- Utilize tools like signals to automate operations
         - 7.01- Detect logic errors in an application using debugging tools
-        - 7.02- Examine log files to trace the source of an error
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
         - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
         - 8.01- Visualize data using a chart or graph
         - 8.02- Elucidate data by customizing elements of a data visualization
         - 8.03- Integrate dynamic data visualizations into an application
@@ -202,5 +211,209 @@ body:
     id: outcome_3_feedback
     attributes:
       label: Outcome 3 Feedback
+      description: Please qualify your above response with examples from your review. Include relevent info like line numbers.
+      render: shell
+
+  - type: dropdown
+    id: outcome_4
+    attributes:
+      label: Outcome 4
+      description: Which outcome are you assessing? See the Canvas rubric for a list of outcomes.
+      options:
+        - 1.01- Translate user need/request into actionable project specifications
+        - 1.02- Break complex functions into manageable modules and functions
+        - 1.03- Use source control best-practices to manage a code-base
+        - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
+        - 2.03- Use function and class decorators to extend or modify behavior
+        - 2.04- Manage user login systems and permission controls
+        - 2.05- Define or modify API endpoints for data retrieval and manipulation
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
+        - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
+        - 4.01- Implement view-logic to receive data and return results
+        - 4.02- Use templates to create stylized web pages
+        - 4.03- Follow standard conventions to develop an intuitive user interface
+        - 4.04- Configure form classes with defined field types
+        - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
+        - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
+        - 5.02- Utilize ORM for data manipulation
+        - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
+        - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
+        - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
+        - 6.02- Deploy an application to a production environment
+        - 6.03- Virtualize a consistent environment using Docker for containerization
+        - 6.04- Implement callbacks and event listeners in applications
+        - 6.05- Utilize tools like signals to automate operations
+        - 7.01- Detect logic errors in an application using debugging tools
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
+        - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
+        - 8.01- Visualize data using a chart or graph
+        - 8.02- Elucidate data by customizing elements of a data visualization
+        - 8.03- Integrate dynamic data visualizations into an application
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome_4_result
+    attributes:
+      label: Outcome 4 Result
+      description: Please assess your reviewee's mastery of the selected objective
+      options:
+        - 0-No Evidence
+        - 1-Below Mastery
+        - 2-Near Mastery
+        - 3-Mastery
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: outcome_4_feedback
+    attributes:
+      label: Outcome 4 Feedback
+      description: Please qualify your above response with examples from your review. Include relevent info like line numbers.
+      render: shell
+
+  - type: dropdown
+    id: outcome_5
+    attributes:
+      label: Outcome 5
+      description: Which outcome are you assessing? See the Canvas rubric for a list of outcomes.
+      options:
+        - 1.01- Translate user need/request into actionable project specifications
+        - 1.02- Break complex functions into manageable modules and functions
+        - 1.03- Use source control best-practices to manage a code-base
+        - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
+        - 2.03- Use function and class decorators to extend or modify behavior
+        - 2.04- Manage user login systems and permission controls
+        - 2.05- Define or modify API endpoints for data retrieval and manipulation
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
+        - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
+        - 4.01- Implement view-logic to receive data and return results
+        - 4.02- Use templates to create stylized web pages
+        - 4.03- Follow standard conventions to develop an intuitive user interface
+        - 4.04- Configure form classes with defined field types
+        - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
+        - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
+        - 5.02- Utilize ORM for data manipulation
+        - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
+        - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
+        - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
+        - 6.02- Deploy an application to a production environment
+        - 6.03- Virtualize a consistent environment using Docker for containerization
+        - 6.04- Implement callbacks and event listeners in applications
+        - 6.05- Utilize tools like signals to automate operations
+        - 7.01- Detect logic errors in an application using debugging tools
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
+        - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
+        - 8.01- Visualize data using a chart or graph
+        - 8.02- Elucidate data by customizing elements of a data visualization
+        - 8.03- Integrate dynamic data visualizations into an application
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome_5_result
+    attributes:
+      label: Outcome 5 Result
+      description: Please assess your reviewee's mastery of the selected objective
+      options:
+        - 0-No Evidence
+        - 1-Below Mastery
+        - 2-Near Mastery
+        - 3-Mastery
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: outcome_5_feedback
+    attributes:
+      label: Outcome 5 Feedback
+      description: Please qualify your above response with examples from your review. Include relevent info like line numbers.
+      render: shell
+
+  - type: dropdown
+    id: outcome_6
+    attributes:
+      label: Outcome 6
+      description: Which outcome are you assessing? See the Canvas rubric for a list of outcomes.
+      options:
+        - 1.01- Translate user need/request into actionable project specifications
+        - 1.02- Break complex functions into manageable modules and functions
+        - 1.03- Use source control best-practices to manage a code-base
+        - 1.04- Provide constructive feedback on a peer's code within the framework of code review/pull request
+        - 2.01- Override class methods to customize object behaviors
+        - 2.02- Utilize inheritance to facilitate code reusability
+        - 2.03- Use function and class decorators to extend or modify behavior
+        - 2.04- Manage user login systems and permission controls
+        - 2.05- Define or modify API endpoints for data retrieval and manipulation
+        - 3.01- Enable and utilize framework-specific tools to test and debug code
+        - 3.02- Utilize Python to connect to an API that sends and receives data
+        - 3.03- Configure a database connection using a Object Relational Mapping (ORM)
+        - 3.04- Utilize pip to install and manage external python packages
+        - 3.05- Create virtual environments to organize application dependencies
+        - 3.06- Write code that expands on a frameworks core set of features
+        - 4.01- Implement view-logic to receive data and return results
+        - 4.02- Use templates to create stylized web pages
+        - 4.03- Follow standard conventions to develop an intuitive user interface
+        - 4.04- Configure form classes with defined field types
+        - 4.05- Configure and maintain URLs/Endpoints to ensure functional navigation and retrieval
+        - 4.06- Incorporate JavaScript into templates to create interactive web pages
+        - 5.01- Utilize Object Relational Mapping (ORM) for data retrieval
+        - 5.02- Utilize ORM for data manipulation
+        - 5.03- Map Python classes to database objects using Object Relational Mapping (ORM)
+        - 5.04- Connect to files to read and write data in different formats
+        - 5.05- Employ many-to-many relationships to connect models
+        - 5.06- Utilize sessions/cookies to facilitate transmittal and storage of data
+        - 6.01- Organize code into the appropriate application layer, according to a framework's design pattern
+        - 6.02- Deploy an application to a production environment
+        - 6.03- Virtualize a consistent environment using Docker for containerization
+        - 6.04- Implement callbacks and event listeners in applications
+        - 6.05- Utilize tools like signals to automate operations
+        - 7.01- Detect logic errors in an application using debugging tools
+        - 7.02- Increase efficiency of an operation using feedback from debugging tools
+        - 7.03- Employ PEP 8 style guidelines for readable code
+        - 7.04- Identify and resolve syntax errors in a codebase
+        - 8.01- Visualize data using a chart or graph
+        - 8.02- Elucidate data by customizing elements of a data visualization
+        - 8.03- Integrate dynamic data visualizations into an application
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome_6_result
+    attributes:
+      label: Outcome 6 Result
+      description: Please assess your reviewee's mastery of the selected objective
+      options:
+        - 0-No Evidence
+        - 1-Below Mastery
+        - 2-Near Mastery
+        - 3-Mastery
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: outcome_6_feedback
+    attributes:
+      label: Outcome 6 Feedback
       description: Please qualify your above response with examples from your review. Include relevent info like line numbers.
       render: shell

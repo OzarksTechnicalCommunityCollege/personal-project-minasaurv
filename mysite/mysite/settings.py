@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-6c@-rw4qbkwqa%=ir@sehnyx2d63&0tqy48im-)cw9-61+aec@"
+SECRET_KEY = config(
+    "DJANGO_SECRET_KEY",
+    default="django-insecure-6c@-rw4qbkwqa%=ir@sehnyx2d63&0tqy48im-)cw9-61+aec@",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+# Parse comma-separated hosts from environment for safer local/prod switching.
+ALLOWED_HOSTS = config(
+    "DJANGO_ALLOWED_HOSTS",
+    default="localhost,127.0.0.1,mysite.com",
+    cast=lambda value: [host.strip() for host in value.split(",") if host.strip()],
+)
 
 
 # Application definition
@@ -39,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "social_django",
     "taggit",
     "recipes.apps.RecipesConfig",
 ]
@@ -65,6 +74,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -79,11 +90,11 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB", "kapykitchen"),
-        "USER": os.getenv("POSTGRES_USER", "mina"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "blah"),
-        "HOST": os.getenv("POSTGRES_HOST", "127.0.0.1"),
-        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+        "NAME": config("POSTGRES_DB", default="kapykitchen"),
+        "USER": config("POSTGRES_USER", default="mina"),
+        "PASSWORD": config("POSTGRES_PASSWORD", default="blah"),
+        "HOST": config("POSTGRES_HOST", default="127.0.0.1"),
+        "PORT": config("POSTGRES_PORT", default="5432"),
     }
 }
 
@@ -125,3 +136,15 @@ USE_TZ = True
 # Use an absolute URL path so static assets resolve correctly
 # in development and production (e.g., /static/recipes/style.css)
 STATIC_URL = "/static/"
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "social_core.backends.google.GoogleOAuth2",
+]
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config("GOOGLE_OAUTH2_KEY", default="")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config("GOOGLE_OAUTH2_SECRET", default="")

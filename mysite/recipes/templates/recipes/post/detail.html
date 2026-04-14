@@ -56,8 +56,8 @@
         {% for comment in comments %}
             <div class="comment card">
                 <p class="info">
-                    Comment {{ forloop.counter }} by {{ comment.name }}
-                    {{ comment.created|localtime|date:"M j, Y g:i a" }}
+                    {{ comment.name }}
+                    <span class="comment-time">{{ comment.created|localtime|date:"M j, Y g:i a" }}</span>
                 </p>
                 {{ comment.body|linebreaks }}
             </div>

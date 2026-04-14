@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 try:
     from django.contrib.postgres.search import (
@@ -17,6 +18,39 @@ except ImportError:
 from taggit.models import Tag
 from .models import Post
 from .forms import CommentForm, SearchForm
+
+
+def _commenter_name(user):
+    full_name = user.get_full_name().strip()
+    if full_name:
+        return full_name
+
+    social_account = user.social_auth.filter(provider="google-oauth2").first()
+    if social_account:
+        extra_data = social_account.extra_data or {}
+        google_name = (extra_data.get("name") or "").strip()
+        if google_name:
+            return google_name
+        given_name = (extra_data.get("given_name") or "").strip()
+        family_name = (extra_data.get("family_name") or "").strip()
+        combined = f"{given_name} {family_name}".strip()
+        if combined:
+            return combined
+
+    return user.username or "Authenticated User"
+
+
+def _commenter_email(user):
+    if user.email:
+        return user.email
+
+    social_account = user.social_auth.filter(provider="google-oauth2").first()
+    if social_account:
+        social_email = (social_account.extra_data or {}).get("email")
+        if social_email:
+            return social_email
+
+    return "no-reply@example.com"
 
 
 # Post list view
@@ -71,6 +105,7 @@ def post_detail(request, year, month, day, post):
 
 
 # Post comment submission view
+@login_required
 def post_comment(request, post_id):
     post = get_object_or_404(
         Post,
@@ -85,6 +120,8 @@ def post_comment(request, post_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.name = _commenter_name(request.user)
+            comment.email = _commenter_email(request.user)
             comment.save()
     else:
         form = CommentForm()

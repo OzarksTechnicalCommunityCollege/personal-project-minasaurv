@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "accounts.apps.AccountsConfig",
     "social_django",
     "taggit",
     "recipes.apps.RecipesConfig",

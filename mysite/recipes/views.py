@@ -1,4 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+import random
+
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -147,7 +149,7 @@ def post_search(request):
     if "query" in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
-            query = form.cleaned_data["query"].strip()
+            query = form.cleaned_data["query"].strip()[:250]
 
             if not query:
                 return render(
@@ -191,3 +193,13 @@ def post_search(request):
             "search_method": search_method,
         },
     )
+
+
+def feeling_hungry(request):
+    total_posts = Post.published.count()
+    if total_posts == 0:
+        return redirect("recipes:post_list")
+
+    random_index = random.randrange(total_posts)
+    random_post = Post.published.all()[random_index]
+    return redirect(random_post.get_absolute_url())

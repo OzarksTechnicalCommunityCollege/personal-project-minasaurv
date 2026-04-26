@@ -1,22 +1,29 @@
 {% extends "recipes/base.html" %}
+{% load icons %}
 {% block title %}Add a comment{% endblock title %}
 {% block content %}
     {% if comment %}
         <section class="card stack">
-            <h2>Comment Submitted</h2>
+            <h2>{% icon 'check' extra_classes='icon-inline' %}Comment Submitted</h2>
             <p>Thank you for contributing. Your comment has been added successfully.</p>
             <p>
-                <a href="{{ post.get_absolute_url }}" class="btn btn-outline">Back to Recipe</a>
+                <a href="{{ post.get_absolute_url }}" class="btn btn-outline">
+                    {% icon 'recipes' extra_classes='button-icon' %}
+                    Back to Recipe
+                </a>
             </p>
         </section>
     {% else %}
         <section class="stack">
-            <h2>Unable to Submit Comment</h2>
+            <h2>{% icon 'warning' extra_classes='icon-inline' %}Unable to Submit Comment</h2>
             <p>Please review the form and try again.</p>
             {% include "recipes/post/includes/comment_form.html" %}
         </section>
     {% endif %}
     <p>
-        <a href="{{ post.get_absolute_url }}">Return to the recipe page</a>
+        <a href="{{ post.get_absolute_url }}">
+            {% icon 'previous' extra_classes='icon-inline' %}
+            Return to the recipe page
+        </a>
     </p>
 {% endblock content %}

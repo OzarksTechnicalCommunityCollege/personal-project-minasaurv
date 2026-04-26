@@ -1,5 +1,6 @@
+{% load icons %}
 <section class="card stack">
-    <h2>Leave a Comment</h2>
+    <h2>{% icon 'comment' extra_classes='icon-inline' %}Leave a Comment</h2>
     {% if request.user.is_authenticated %}
         <p>Share feedback, questions, etc.</p>
         <form action="{% url 'recipes:post_comment' post.id %}"
@@ -9,7 +10,10 @@
             {{ form.body }}
             {% csrf_token %}
             <p>
-                <input type="submit" value="Post Comment" class="btn">
+                <button type="submit" class="btn">
+                    {% icon 'comment' extra_classes='button-icon' %}
+                    Post Comment
+                </button>
             </p>
         </form>
     {% else %}

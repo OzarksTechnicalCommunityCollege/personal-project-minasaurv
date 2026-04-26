@@ -377,13 +377,14 @@ p {
 }
 
 .btn-primary {
-    border-color: var(--river-blue);
-    background: var(--river-blue);
+    border-color: #2f6f84;
+    background: #2f6f84;
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background: #4a8fa2;
-    box-shadow: 0 6px 14px rgba(74, 143, 162, 0.24);
+    background: #255b6d;
+    box-shadow: 0 6px 14px rgba(37, 91, 109, 0.28);
 }
 
 /* Tags / badges */
@@ -507,6 +508,40 @@ p {
 .search-icon {
     font-size: 1.1rem;
     line-height: 1;
+}
+
+.search-icon::before {
+    display: block;
+}
+
+.icon-inline {
+    margin-right: 0.4rem;
+}
+
+.icon-muted {
+    color: var(--muted-text);
+}
+
+.main-nav a,
+.nav-link-button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.main-nav a {
+    justify-content: center;
+}
+
+.nav-link-button {
+    justify-content: center;
+}
+
+.footer-policy-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 .main-nav {
@@ -1584,8 +1619,16 @@ p {
     margin-bottom: 2rem;
 }
 
-.search-hero-form label {
-    display: none;
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .search-hero-input-group {
@@ -1645,6 +1688,11 @@ p {
 
 .search-hero-links {
     margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .search-hero-links a {
@@ -1659,6 +1707,18 @@ p {
 .search-hero-links a:hover {
     background: rgba(90, 160, 180, 0.1);
     text-decoration: none;
+}
+
+.search-hero-links .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark-text);
+}
+
+.button-icon {
+    font-size: 0.95em;
+    line-height: 1;
 }
 
 .search-tips-section {

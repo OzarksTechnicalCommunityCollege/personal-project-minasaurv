@@ -1,18 +1,28 @@
 {% extends "recipes/base.html" %}
-{% load markdown_extras tz %}
+{% load markdown_extras tz icons %}
 {% block title %}{{ post.title }}{% endblock title %}
 {% block content %}
     <article class="stack recipes-detail-page">
         <header class="stack card recipe-detail-header">
             <p class="home-eyebrow">Recipe Details</p>
             <h1>{{ post.title }}</h1>
-            <p class="card-meta">Published {{ post.publish|date:"M j, Y" }} by {{ post.author }}</p>
+            <p class="card-meta">
+                {% icon 'calendar' extra_classes='icon-inline icon-muted' %}
+                Published {{ post.publish|date:"M j, Y" }}
+                <br>
+                {% icon 'author' extra_classes='icon-inline icon-muted' %}
+                by {{ post.author }}
+            </p>
             <div class="cluster">
-                {% if post.servings %}<span class="badge">Serves {{ post.servings }}</span>{% endif %}
-                {% if post.time %}<span class="badge">{{ post.time }} mins</span>{% endif %}
+                {% if post.servings %}
+                    <span class="badge">{% icon 'servings' extra_classes='icon-inline' %}Serves {{ post.servings }}</span>
+                {% endif %}
+                {% if post.time %}
+                    <span class="badge">{% icon 'time' extra_classes='icon-inline' %}{{ post.time }} mins</span>
+                {% endif %}
             </div>
             <p class="recipe-tag-line" aria-label="Recipe tags">
-                <strong>Tags:</strong>
+                <strong>{% icon 'tags' extra_classes='icon-inline' %}Tags:</strong>
                 &lt;
                 {% for tag in post.tags.all %}
                     <a href="{% url 'recipes:post_list_by_tag' tag.slug %}" class="tag-inline-link">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
@@ -28,7 +38,7 @@
     </article>
     {% if post.recipe_ingredients.all %}
         <section class="ingredients card recipe-detail-panel">
-            <h2>Ingredients</h2>
+            <h2>{% icon 'ingredients' extra_classes='icon-inline' %}Ingredients</h2>
             <ul>
                 {% for item in post.recipe_ingredients.all %}
                     <li>
@@ -43,7 +53,7 @@
     {% endif %}
     {% if post.recipe_steps.all %}
         <section class="steps card recipe-detail-panel">
-            <h2>Steps</h2>
+            <h2>{% icon 'steps' extra_classes='icon-inline' %}Steps</h2>
             <ol>
                 {% for step in post.recipe_steps.all %}<li>{{ step.instruction|linebreaksbr }}</li>{% endfor %}
             </ol>
@@ -51,7 +61,10 @@
     {% endif %}
     <section class="recipe-comments stack">
         {% with comments.count as total_comments %}
-            <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+            <h2>
+                {% icon 'comments' extra_classes='icon-inline' %}
+                {{ total_comments }} comment{{ total_comments|pluralize }}
+            </h2>
         {% endwith %}
         {% for comment in comments %}
             <div class="comment card">
@@ -62,7 +75,7 @@
                 {{ comment.body|linebreaks }}
             </div>
         {% empty %}
-            <p>There are no comments.</p>
+            <p>{% icon 'comment' extra_classes='icon-inline icon-muted' %}There are no comments.</p>
         {% endfor %}
     </section>
     {% include "recipes/post/includes/comment_form.html" %}

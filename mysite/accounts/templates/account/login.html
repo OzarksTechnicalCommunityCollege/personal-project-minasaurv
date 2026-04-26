@@ -1,12 +1,16 @@
 {% extends "recipes/base.html" %}
+{% load icons %}
 
 {% block title %}Log in{% endblock title %}
 
 {% block content %}
     <section class="card stack">
-        <h1>Log in</h1>
+        <h1>{% icon 'login' extra_classes='icon-inline' %}Log in</h1>
         <p>
-            <a class="btn" href="{% url 'social:begin' 'google-oauth2' %}">Sign in with Google</a>
+            <a class="btn" href="{% url 'social:begin' 'google-oauth2' %}">
+                {% icon 'google' extra_classes='button-icon' %}
+                Sign in with Google
+            </a>
         </p>
     </section>
 {% endblock content %}

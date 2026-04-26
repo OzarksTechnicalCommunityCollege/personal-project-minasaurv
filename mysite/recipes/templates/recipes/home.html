@@ -1,20 +1,26 @@
 {% extends "recipes/base.html" %}
-{% load static %}
+{% load static icons %}
 {% block title %}Home{% endblock title %}
 {% block content %}
     <section class="home-hero" aria-label="Welcome section">
         <div class="home-hero-copy">
             <p class="home-eyebrow">The Cozy Kitchen</p>
-            <h1>Delicious recipes, zero stress.</h1>
-            <p class="home-lead">Welcome to a whimsical corner of the kitchen where friendly capybara energy meets practical recipes you can actually cook tonight.</p>
+            <h1>Recipes shared by real users.</h1>
+            <p class="home-lead">KapyKitchen is a capybara-themed recipe site where people can submit, browse, and search simple recipes for everyday cooking.</p>
             <div class="cluster home-actions">
-                <a href="{% url 'recipes:post_list' %}" class="btn btn-primary">Browse Recipes</a>
-                <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">Find a Cozy Dish</a>
+                <a href="{% url 'recipes:post_list' %}" class="btn btn-primary">
+                    {% icon 'recipes' extra_classes='button-icon' %}
+                    Browse Recipes
+                </a>
+                <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">
+                    {% icon 'search' extra_classes='button-icon' %}
+                    Search Recipes
+                </a>
             </div>
             <ul class="home-highlights" aria-label="Key benefits">
-                <li>Gentle, weeknight-friendly meals</li>
-                <li>No-fuss ingredient lists</li>
-                <li>Step-by-step guidance without the chaos</li>
+                <li>User-submitted recipes</li>
+                <li>Clear ingredient lists</li>
+                <li>Easy browsing and search</li>
             </ul>
         </div>
         <div class="home-hero-media card">
@@ -28,25 +34,31 @@
 
     <section class="home-value grid" aria-label="Why use KapyKitchen">
         <article class="card home-value-card stack">
-            <h2>Built for Cozy Kitchens</h2>
-            <p>Comfort-first recipes with clear steps, realistic timings, and zero mysterious chef jargon.</p>
+            <h2>Built Around Sharing</h2>
+            <p>Users can contribute their own recipes, making the site a growing collection of meals from the community.</p>
         </article>
         <article class="card home-value-card stack">
-            <h2>Cook with What You Have</h2>
-            <p>Start from your pantry and find capybara-approved meals without emergency grocery runs.</p>
+            <h2>Easy to Explore</h2>
+            <p>Use the search page to find recipes by ingredient, title, or whatever you want to cook next.</p>
         </article>
         <article class="card home-value-card stack">
-            <h2>Keep It Easy, Keep It Fun</h2>
-            <p>From quick comfort bowls to weekend bakes, pick recipes that match your mood and time.</p>
+            <h2>Made for Everyday Cooking</h2>
+            <p>From quick dinners to weekend projects, the site helps you find recipes that fit your time and energy.</p>
         </article>
     </section>
 
     <section class="home-cta card" aria-label="Get started">
-        <h2>Ready for your next cozy bite?</h2>
-        <p>Hop into the recipe list or search by ingredient and let Chefybara guide dinner.</p>
+        <h2>Ready to find your next recipe?</h2>
+        <p>Browse what other users have submitted or search for something specific.</p>
         <div class="cluster">
-            <a href="{% url 'recipes:post_list' %}" class="btn">Start Cooking</a>
-            <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">Open Search</a>
+            <a href="{% url 'recipes:post_list' %}" class="btn">
+                {% icon 'sparkles' extra_classes='button-icon' %}
+                Start Cooking
+            </a>
+            <a href="{% url 'recipes:post_search' %}" class="btn btn-outline">
+                {% icon 'search' extra_classes='button-icon' %}
+                Search Recipes
+            </a>
         </div>
     </section>
 {% endblock content %}

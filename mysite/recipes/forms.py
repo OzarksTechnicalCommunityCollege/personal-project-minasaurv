@@ -13,11 +13,12 @@ class CommentForm(forms.ModelForm):
 # Search form for searching recipes
 class SearchForm(forms.Form):
     query = forms.CharField(
-        max_length=250,
+        required=False,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Search recipes...",
-                "class": "search-input-dynamic"
+                "class": "search-input-dynamic",
+                "aria-label": "Search recipes",
             }
         ),
     )

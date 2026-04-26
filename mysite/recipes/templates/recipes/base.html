@@ -1,14 +1,15 @@
-{% load static %}
+{% load static icons %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="KapyKitchen recipes with practical ingredients, clear steps, and approachable cooking guidance.">
+        <meta
+            name="description"
+            content="KapyKitchen recipes with practical ingredients, clear steps, and approachable cooking guidance.">
         <meta name="keywords" content="recipes, cooking, ingredients, meal ideas, KapyKitchen">
-        <title>
-            {% block title %}{% endblock title %}
-        </title>
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link href="{% static 'recipes/style.css' %}" rel="stylesheet">
     </head>
     <body>
@@ -16,62 +17,78 @@
             <div class="bar"></div>
             <div class="container header-inner">
                 <a class="brand" href="{% url 'home' %}" aria-label="KapyKitchen Home">KapyKitchen</a>
-                <!-- Header Search Bar -->
                 <div class="header-search">
-                    <form method="get"
-                          action="{% url 'recipes:post_search' %}"
-                          role="search"
-                          aria-label="Recipe search">
+                    <form
+                        method="get"
+                        action="{% url 'recipes:post_search' %}"
+                        role="search"
+                        aria-label="Recipe search">
                         <div class="search-input-group">
-                            <input type="search"
-                                   name="query"
-                                   placeholder="Search recipes, ingredients..."
-                                   aria-label="Search recipes"
-                                   class="search-input"
-                                   value="{{ request.GET.query|default:'' }}">
+                            <input
+                                type="search"
+                                name="query"
+                                placeholder="Search recipes, ingredients..."
+                                aria-label="Search recipes"
+                                class="search-input"
+                                value="{{ request.GET.query|default:'' }}">
                             <button type="submit" class="search-button" aria-label="Search">
-                                <span class="search-icon" aria-hidden="true">🔍</span>
+                                {% icon 'search' extra_classes='search-icon' %}
                             </button>
                         </div>
                     </form>
                 </div>
-                <button class="nav-toggle"
-                        type="button"
-                        aria-expanded="false"
-                        aria-controls="main-navigation"
-                        aria-label="Toggle navigation menu">
+                <button
+                    class="nav-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="main-navigation"
+                    aria-label="Toggle navigation menu">
                     <span class="nav-toggle-bar" aria-hidden="true"></span>
                     <span class="nav-toggle-bar" aria-hidden="true"></span>
                     <span class="nav-toggle-bar" aria-hidden="true"></span>
                 </button>
                 <nav class="main-nav" id="main-navigation" role="navigation" aria-label="Main navigation">
                     <div class="nav-search">
-                        <form method="get"
-                              action="{% url 'recipes:post_search' %}"
-                              role="search"
-                              aria-label="Recipe search">
+                        <form
+                            method="get"
+                            action="{% url 'recipes:post_search' %}"
+                            role="search"
+                            aria-label="Recipe search">
                             <div class="search-input-group">
-                                <input type="search"
-                                       name="query"
-                                       placeholder="Search recipes, ingredients..."
-                                       aria-label="Search recipes"
-                                       class="search-input"
-                                       value="{{ request.GET.query|default:'' }}">
+                                <input
+                                    type="search"
+                                    name="query"
+                                    placeholder="Search recipes, ingredients..."
+                                    aria-label="Search recipes"
+                                    class="search-input"
+                                    value="{{ request.GET.query|default:'' }}">
                                 <button type="submit" class="search-button" aria-label="Search">
-                                    <span class="search-icon" aria-hidden="true">🔍</span>
+                                    {% icon 'search' extra_classes='search-icon' %}
                                 </button>
                             </div>
                         </form>
                     </div>
-                    <a href="{% url 'home' %}">Home</a>
-                    <a href="{% url 'recipes:post_list' %}">Recipes</a>
+                    <a href="{% url 'home' %}">
+                        {% icon 'home' extra_classes='icon-inline' %}
+                        Home
+                    </a>
+                    <a href="{% url 'recipes:post_list' %}">
+                        {% icon 'recipes' extra_classes='icon-inline' %}
+                        Recipes
+                    </a>
                     {% if request.user.is_authenticated %}
                         <form action="{% url 'logout' %}" method="post" class="nav-inline-form">
                             {% csrf_token %}
-                            <button type="submit" class="nav-link-button">Log out</button>
+                            <button type="submit" class="nav-link-button">
+                                {% icon 'logout' extra_classes='icon-inline' %}
+                                Log out
+                            </button>
                         </form>
                     {% else %}
-                        <a href="{% url 'login' %}">Log in</a>
+                        <a href="{% url 'login' %}">
+                            {% icon 'login' extra_classes='icon-inline' %}
+                            Log in
+                        </a>
                     {% endif %}
                 </nav>
             </div>
@@ -91,8 +108,14 @@
                         </div>
                     </div>
                     <div class="footer-policy-links">
-                        <a href="#terms">Terms of Service</a>
-                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">
+                            {% icon 'recipes' extra_classes='icon-inline' %}
+                            Terms of Service
+                        </a>
+                        <a href="#privacy">
+                            {% icon 'author' extra_classes='icon-inline' %}
+                            Privacy Policy
+                        </a>
                     </div>
                     <p>© {% now "Y" %} KapyKitchen. All rights reserved.</p>
                 </div>
@@ -134,19 +157,22 @@
             let currentPlaceholderIndex = -1;
 
             function setRandomPlaceholder(animate = false) {
-                const searchInputs = document.querySelectorAll('.search-input, .search-input-dynamic, .search-hero-form input');
+                const searchInputs = document.querySelectorAll(
+                    '.search-input, .search-input-dynamic, .search-hero-form input'
+                );
                 let randomIndex = Math.floor(Math.random() * searchPlaceholders.length);
-                
-                // Ensure we don't pick the same placeholder twice in a row
+
                 while (randomIndex === currentPlaceholderIndex) {
                     randomIndex = Math.floor(Math.random() * searchPlaceholders.length);
                 }
-                
+
                 currentPlaceholderIndex = randomIndex;
                 const newPlaceholder = searchPlaceholders[randomIndex];
-                
+
                 searchInputs.forEach(input => {
-                    if (animate) {
+                    const hasValue = input.value && input.value.trim() !== '';
+
+                    if (animate && !hasValue) {
                         input.classList.add('placeholder-animating');
                         setTimeout(() => {
                             input.placeholder = newPlaceholder;
@@ -162,7 +188,6 @@
                 });
             }
 
-            // Set placeholder on page load
             document.addEventListener('DOMContentLoaded', () => {
                 setRandomPlaceholder(false);
 
@@ -196,13 +221,11 @@
                     });
                 }
 
-                // Change placeholder every 4 seconds
                 setInterval(() => {
                     setRandomPlaceholder(true);
                 }, 4000);
             });
-            
-            // Also run immediately in case DOM is already loaded
+
             setRandomPlaceholder(false);
             setInterval(() => {
                 setRandomPlaceholder(true);

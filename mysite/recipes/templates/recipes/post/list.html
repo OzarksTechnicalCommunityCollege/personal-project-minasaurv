@@ -1,16 +1,16 @@
 {% extends "recipes/base.html" %}
-{% load markdown_extras %}
+{% load markdown_extras icons %}
 {% block title %}Recipes{% endblock title %}
 {% block content %}
     <section class="recipes-list-page stack" aria-label="Recipe list page">
         <header class="page-header recipes-list-header">
             {% if tag %}
                 <p class="home-eyebrow">Recipe Collection</p>
-                <h1>Tagged: {{ tag.name }}</h1>
+                <h1>{% icon 'tags' extra_classes='icon-inline' %}Tagged: {{ tag.name }}</h1>
                 <p class="page-subtitle">Curated recipes matching this topic.</p>
             {% else %}
                 <p class="home-eyebrow">Recipe Collection</p>
-                <h1>All Recipes</h1>
+                <h1>{% icon 'recipes' extra_classes='icon-inline' %}All Recipes</h1>
                 <p class="page-subtitle">Browse the latest recipes from our kitchen.</p>
             {% endif %}
         </header>
@@ -21,13 +21,22 @@
                 <h2 class="card-title">
                     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                 </h2>
-                <p class="card-meta">Published {{ post.publish|date:"M j, Y" }} by {{ post.author }}</p>
+                <p class="card-meta">
+                    {% icon 'calendar' extra_classes='icon-inline icon-muted' %}
+                    Published {{ post.publish|date:"M j, Y" }}
+                    {% icon 'author' extra_classes='icon-inline icon-muted' %}
+                    by {{ post.author }}
+                </p>
                 <div class="cluster recipe-list-stats">
-                    {% if post.servings %}<span class="badge">Serves {{ post.servings }}</span>{% endif %}
-                    {% if post.time %}<span class="badge">{{ post.time }} mins</span>{% endif %}
+                    {% if post.servings %}
+                        <span class="badge">{% icon 'servings' extra_classes='icon-inline' %}Serves {{ post.servings }}</span>
+                    {% endif %}
+                    {% if post.time %}
+                        <span class="badge">{% icon 'time' extra_classes='icon-inline' %}{{ post.time }} mins</span>
+                    {% endif %}
                 </div>
                 <p class="recipe-tag-line" aria-label="Recipe tags">
-                    <strong>Tags:</strong>
+                    <strong>{% icon 'tags' extra_classes='icon-inline' %}Tags:</strong>
                     &lt;
                     {% for tag in post.tags.all %}
                         <a href="{% url 'recipes:post_list_by_tag' tag.slug %}" class="tag-inline-link">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
@@ -38,17 +47,26 @@
                 </p>
                 <div class="recipe-list-excerpt">{{ post.content|md|truncatewords_html:30 }}</div>
                 <p class="recipe-list-action">
-                    <a href="{{ post.get_absolute_url }}" class="btn btn-outline">View Recipe</a>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-outline">
+                        {% icon 'view' extra_classes='button-icon' %}
+                        View Recipe
+                    </a>
                 </p>
             </article>
         {% endfor %}
     </section>
     <div class="pagination">
         {% if posts.paginator.num_pages > 1 %}
-            <span class="page-info">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+            <span class="page-info">
+                {% icon 'recipes' extra_classes='icon-inline icon-muted' %}
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
             <div class="page-links">
                 {% if posts.has_previous %}
-                    <a href="?page={{ posts.previous_page_number }}" class="prev">Previous</a>
+                    <a href="?page={{ posts.previous_page_number }}" class="prev">
+                        {% icon 'previous' extra_classes='icon-inline' %}
+                        Previous
+                    </a>
                 {% else %}
                     <span class="disabled prev">Previous</span>
                 {% endif %}
@@ -60,7 +78,10 @@
                     {% endif %}
                 {% endfor %}
                 {% if posts.has_next %}
-                    <a href="?page={{ posts.next_page_number }}" class="next">Next</a>
+                    <a href="?page={{ posts.next_page_number }}" class="next">
+                        Next
+                        {% icon 'next' extra_classes='icon-inline' %}
+                    </a>
                 {% else %}
                     <span class="disabled next">Next</span>
                 {% endif %}

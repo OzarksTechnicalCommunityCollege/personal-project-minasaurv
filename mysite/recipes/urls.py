@@ -17,4 +17,6 @@ urlpatterns = [
     path("<int:post_id>/comment/", views.post_comment, name="post_comment"),
     # Search page
     path("search/", views.post_search, name="post_search"),
+    # Random recipe redirect
+    path("feeling-hungry/", views.feeling_hungry, name="feeling_hungry"),
 ]

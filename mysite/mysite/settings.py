@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "accounts.apps.AccountsConfig",
+    "django_icons",
     "social_django",
     "taggit",
     "recipes.apps.RecipesConfig",
@@ -137,6 +138,37 @@ USE_TZ = True
 # Use an absolute URL path so static assets resolve correctly
 # in development and production (e.g., /static/recipes/style.css)
 STATIC_URL = "/static/"
+
+DJANGO_ICONS = {
+    "ICONS": {
+        "search": {"name": "fa-solid fa-magnifying-glass"},
+        "hungry": {"name": "fa-solid fa-shuffle"},
+        "home": {"name": "fa-solid fa-house"},
+        "recipes": {"name": "fa-solid fa-book-open"},
+        "login": {"name": "fa-solid fa-right-to-bracket"},
+        "logout": {"name": "fa-solid fa-right-from-bracket"},
+        "calendar": {"name": "fa-regular fa-calendar"},
+        "author": {"name": "fa-regular fa-user"},
+        "servings": {"name": "fa-solid fa-bowl-food"},
+        "time": {"name": "fa-regular fa-clock"},
+        "tags": {"name": "fa-solid fa-tags"},
+        "view": {"name": "fa-solid fa-arrow-up-right-from-square"},
+        "previous": {"name": "fa-solid fa-chevron-left"},
+        "next": {"name": "fa-solid fa-chevron-right"},
+        "ingredients": {"name": "fa-solid fa-carrot"},
+        "steps": {"name": "fa-solid fa-list-ol"},
+        "comments": {"name": "fa-regular fa-comments"},
+        "comment": {"name": "fa-regular fa-comment"},
+        "check": {"name": "fa-solid fa-circle-check"},
+        "warning": {"name": "fa-solid fa-triangle-exclamation"},
+        "google": {"name": "fa-brands fa-google"},
+        "sparkles": {"name": "fa-solid fa-wand-magic-sparkles"},
+        "cozy": {"name": "fa-solid fa-mug-hot"},
+        "easy": {"name": "fa-solid fa-feather-pointed"},
+        "tips": {"name": "fa-solid fa-lightbulb"},
+        "no_results": {"name": "fa-regular fa-face-frown"},
+    }
+}
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",

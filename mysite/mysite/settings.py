@@ -64,6 +64,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+if DEBUG:
+    INSTALLED_APPS += ["debug_toolbar"]
+    MIDDLEWARE.insert(1, "debug_toolbar.middleware.DebugToolbarMiddleware")
+
 ROOT_URLCONF = "mysite.urls"
 
 TEMPLATES = [
@@ -97,6 +101,17 @@ DATABASES = {
         "PASSWORD": config("POSTGRES_PASSWORD", default="blah"),
         "HOST": config("POSTGRES_HOST", default="127.0.0.1"),
         "PORT": config("POSTGRES_PORT", default="5432"),
+    }
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": config("REDIS_URL", default="redis://127.0.0.1:6379/1"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "IGNORE_EXCEPTIONS": True,
+        },
     }
 }
 
@@ -138,6 +153,8 @@ USE_TZ = True
 # Use an absolute URL path so static assets resolve correctly
 # in development and production (e.g., /static/recipes/style.css)
 STATIC_URL = "/static/"
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 DJANGO_ICONS = {
     "ICONS": {

@@ -12,3 +12,8 @@ class RecipesConfig(AppConfig):
         except Exception:
             # If import fails (e.g., during certain management commands), skip
             pass
+
+        try:
+            import recipes.signals  # noqa: F401
+        except Exception:
+            pass

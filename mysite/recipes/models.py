@@ -45,6 +45,14 @@ class Post(models.Model):
         null=True, blank=True, help_text="Preparation/cook time in minutes"
     )
     tags = TaggableManager(blank=True)
+    ingredients = models.ManyToManyField(
+        "Ingredient",
+        through="RecipeIngredient",
+        related_name="posts",
+        blank=True,
+    )
+    ingredient_count = models.PositiveIntegerField(default=0, editable=False)
+    comment_count = models.PositiveIntegerField(default=0, editable=False)
     objects = models.Manager()
     published = PublishedManager()
 
